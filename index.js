@@ -1,15 +1,24 @@
-PWDangular.module('TestModule',[])
-    .directive('myCustomer', directiveTest1)
-    .controller('controller1',function($scope)
-    {
-        $scope.name = 'wwww';
-    })
+angular.module('TestModule',[])
+    .directive('myCustomer', directiveTest1);
 
 function directiveTest1() {
-    return {
+
+    var directive = {
         restrict: 'AE',
-        template: 'ccc: {{name}};'
+        link: link1,
+        controller: controller1,
+        templateUrl: './my-customer.html'
     };
+
+    return directive;
+}
+
+function link1(scope) {
+    scope.name = 'aaron';
+}
+
+function controller1($scope) {
+    $scope.address = 'address1';
 }
 
 
